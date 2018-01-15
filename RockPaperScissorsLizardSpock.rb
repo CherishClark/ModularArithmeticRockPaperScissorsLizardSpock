@@ -15,46 +15,28 @@
 # spock vaporizes rock
 # rock crushes scissors
 
+@modAnswer = {
+  'rock' => 0,
+  'spock' => 1,
+  'paper' => 2,
+  'lizard' => 3,
+  'scissors' => 4,
+}
+
 puts "Player 1, rock, paper, scissors, lizard, spock?"
-p1 = gets.chomp!
+p1 = gets.chomp!.downcase
 
 puts "Player 2, rock, paper, scissors, lizard, spock?"
-p2 = gets.chomp!
+p2 = gets.chomp!.downcase
 
-case p1
-  when "rock"
-    p1 = 0 
-  when "spock"
-    p1 = 1 
-  when "paper"
-    p1 = 2 
-  when "lizard"
-    p1 = 3
-  when "scissors"
-    p1 = 4
-end
-
-case p2
-  when "rock"
-    p2 = 0 
-  when "spock"
-    p2 = 1 
-  when "paper"
-    p2 = 2 
-  when "lizard"
-    p2 = 3
-  when "scissors"
-    p2 = 4
-end
-
-if (p2 + 1) % 5 == p1
-  p "player 1 wins"
-elsif (p2 + 2) % 5 == p1
-  p "p1 wins"
-elsif p2 == p1 
-  p "tie"
+if (@modAnswer[p2] + 1) % 5 == @modAnswer[p1]
+  p "Player 1 wins, #{p1} beats #{p2}"
+elsif (@modAnswer[p2] + 2) % 5 == @modAnswer[p1]
+  p "Player 1 wins, #{p1} beats #{p2}"
+elsif @modAnswer[p2] == @modAnswer[p1]
+  p "Tie!"
 else 
-  p "player 2 wins"
+  p "player 2 wins, #{p2} beats #{p1}!"
 end
 
 
